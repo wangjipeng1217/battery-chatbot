@@ -1,0 +1,157 @@
+/* 容器布局 */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* 顶部标题 */
+.chat-header {
+  background-color: #007bff;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.chat-header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* 消息滚动区域 */
+.messages-area {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* 消息行 (用于左右对齐) */
+.message-row {
+  display: flex;
+  align-items: flex-start; /* 让头像和气泡顶部对齐 */
+  margin-bottom: 20px;     /* 增加每条消息之间的距离 */
+}
+
+.message-row.user {
+  justify-content: flex-end; /* 用户在右 */
+}
+
+.message-row.bot {
+  justify-content: flex-start; /* 机器人在左 */
+}
+
+/* 气泡样式 */
+.message-bubble {
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  line-height: 1.5;
+  position: relative;
+  font-size: 0.95rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* 给气泡加一点立体感 */
+}
+
+.user .message-bubble {
+  background-color: #007bff;
+  color: white;
+  border-bottom-right-radius: 2px;
+}
+
+.bot .message-bubble {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ddd;
+  border-bottom-left-radius: 2px;
+}
+
+/* 来源小字 */
+.sources {
+  margin-top: 8px;
+  padding-top: 5px;
+  border-top: 1px solid #eee;
+  color: #666;
+  font-size: 0.75rem;
+}
+
+/* 底部输入区 */
+.input-area {
+  padding: 20px;
+  background-color: white;
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  outline: none;
+}
+
+.input-area input:focus {
+  border-color: #007bff;
+}
+
+.input-area button {
+  padding: 0 25px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.input-area button:disabled {
+  background-color: #ccc;
+}
+
+.loading-indicator {
+  text-align: center;
+  color: #999;
+  font-size: 0.8rem;
+}
+
+/* --- 新增：头像通用样式 --- */
+.avatar {
+  width: 40px;        /* 头像宽度 */
+  height: 40px;       /* 头像高度 */
+  border-radius: 50%; /* 圆形 */
+  object-fit: cover;  /* 防止图片变形 */
+  flex-shrink: 0;     /* 防止头像被压缩 */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+}
+
+/* --- 新增：机器人头像特定间距 --- */
+.bot-avatar {
+  margin-right: 10px; /* 头像在左，右边留空隙 */
+  background-color: #e3f2fd; /* 给机器人的透明头像加个底色 */
+}
+
+/* --- 新增：用户头像特定间距 --- */
+.user-avatar {
+  margin-left: 10px;  /* 头像在右，左边留空隙 */
+  background-color: #fff3e0;
+}
+
+/* 给机器人气泡加个小尖角指向左边 (可选美化) */
+.bot .message-bubble {
+  border-top-left-radius: 2px; /* 左上角变尖 */
+}
+
+/* 给用户气泡加个小尖角指向右边 (可选美化) */
+.user .message-bubble {
+  border-top-right-radius: 2px; /* 右上角变尖 */
+}
